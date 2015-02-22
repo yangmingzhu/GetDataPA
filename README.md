@@ -1,5 +1,4 @@
-# GetDataPA
-Peer assessment project for "getting and cleaning data"
+# GetDataPA - Peer assessment project for "getting and cleaning data"
 
 The detailed steps how to fulfill the project requirements are described below.
 
