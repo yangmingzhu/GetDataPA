@@ -9,7 +9,8 @@ process_data <- function() {
   y <- merge_y()
   
   
-  # pt2: Extracts only the measurements on the mean and standard deviation for each measurement.
+  # pt2: Extracts only the measurements on the mean and standard deviation 
+  #      for each measurement.
   # load feature vectors
   features <- read.table("./features.txt")
   # filter the features with mean/std in them
@@ -21,7 +22,8 @@ process_data <- function() {
   sub_features <- features[sub_feature_idx, ]
   
   
-  # pt3: Uses descriptive activity names to name the activities in the data set
+  # pt3: Uses descriptive activity names to name the activities in the 
+  #      data set
   # load activity labels
   activity_labels <- read.table("./activity_labels.txt") 
   # merge changes the order, thus we do that way
@@ -38,6 +40,31 @@ process_data <- function() {
   data <- cbind(subject, activity, subX)
   
   
+  # pt5: creates a second, independent tidy data set with the average of 
+  #      each variable for each activity and each subject.
+  acts <- c("LAYING", "SITTING", "STANDING", "WALKING", "WALKING_DOWNSTAIRS", "WALKING_UPSTAIRS")
+  # copy first row to get the data frame structure in place. Removed at end
+  df <- data[1, ]
+  
+  for (i in 1:30) { # 30 subjects
+    for (j in 1:6) { # 6 activities
+      mydata <- subset(data, data$subject==i & data$activity==acts[j])
+      myavg <- colMeans(mydata[, 3:ncol(mydata)])
+      # tmp data frame. Replace its columns
+      mydf <- data[1, ]
+      mydf[1, 1] <- i
+      mydf[1, 2] <- acts[j]
+      for (k in 1:86) {
+        mydf[1, k+2] <- myavg[k]
+      }
+      # simply add to the data frame
+      df <- rbind(df, mydf)
+    }
+  }
+  # remove the first row added
+  df <- df[-1, ]
+  
+  write.table(df, "ProcessedMean.txt", row.name=FALSE)
 }
 
 fix_activity <- function(y, activity_labels) {
