@@ -6,10 +6,10 @@ For this project, the data was filtered and only the measurements on the mean an
 
 The so-processed data have 10299 observations and each observation has 88 variables which are listed below.
 
-Note that the code book is applicable to the new tidy dataset the project asks, except the value is the average.
+Note that the code book is applicable to the new tidy dataset the project asks for, except the value is the average.
 
 
-"subject": 1-30 represents one of the so subjects.
+"subject": 1-30 represents one of the 30 subjects.
 
 "activity": 6-level factors with values LAYING, SITTING, STANDING, WALKING, WALKING_DOWNSTAIRS, and WALKING_UPSTAIRS.
 

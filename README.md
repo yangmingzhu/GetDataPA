@@ -22,5 +22,5 @@ We put all data together, the subject and activity information is merged with th
 
 ## Creates a second, independent tidy data set with the average of each variable for each activity and each subject
 
-We simply subset the data from the previous step, using subject and activity combination in 2-loops. They might be better way to do it using one of the apply functions. Once the (subject, activity)-subset is generated, colMeans is used to compute the mean of all columns of measurements. We put the result of (subject, activity) in a data frame and gradually build up the final data frame. In the end, the data frame is written to a file.
+We simply subset the data from the previous step, using subject and activity (180) combination in 2-loops. They might be better way to do it using one of the apply functions. Once the (subject, activity)-subset is generated, colMeans is used to compute the means of all columns of measurements. We put the result of (subject, activity)-subset in a data frame and gradually build up the final data frame. In the end, the data frame is written to a file.
 
